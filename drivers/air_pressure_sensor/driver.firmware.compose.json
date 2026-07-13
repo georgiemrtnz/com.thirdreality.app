@@ -1,0 +1,28 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "After OTA ends, the SDK should not respond to the upgrade_end_response packet."
+      },
+      "device": {
+        "manufacturerName": "Third Reality, Inc",
+        "productId": "3RAP0149BZ"
+      },
+      "files": [
+        {
+          "fileVersion": 24,
+          "imageType": 54190,
+          "manufacturerCode": 5127,
+          "maxHardwareVersion": 65520,
+          "minHardwareVersion": 0,
+          "size": 266114,
+          "name": "Smart_Filter_Sensor_OTA_24_1.00.24.ota",
+          "integrity": "sha256:49019d801fbf511d2d2b989b70a12c75f0595f473d74572739371f7e8d991cd6"
+        }
+      ]
+    }
+  ],
+  "wakeInstruction": {
+    "en": "Manual triggering devices. Once the status is synchronized on the Homey App, it indicates that the sleep mode has been exited."
+  }
+}

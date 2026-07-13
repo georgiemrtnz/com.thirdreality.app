@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.thirdreality.app",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "compatibility": ">=12.5.0",
   "sdk": 3,
   "platforms": [
@@ -143,7 +143,35 @@
           }
         }
       },
-      "id": "air_pressure_sensor"
+      "id": "air_pressure_sensor",
+      "firmwareUpdates": {
+        "updates": [
+          {
+            "changelog": {
+              "en": "After OTA ends, the SDK should not respond to the upgrade_end_response packet."
+            },
+            "device": {
+              "manufacturerName": "Third Reality, Inc",
+              "productId": "3RAP0149BZ"
+            },
+            "files": [
+              {
+                "fileVersion": 24,
+                "imageType": 54190,
+                "manufacturerCode": 5127,
+                "maxHardwareVersion": 65520,
+                "minHardwareVersion": 0,
+                "size": 266114,
+                "name": "Smart_Filter_Sensor_OTA_24_1.00.24.ota",
+                "integrity": "sha256:49019d801fbf511d2d2b989b70a12c75f0595f473d74572739371f7e8d991cd6"
+              }
+            ]
+          }
+        ],
+        "wakeInstruction": {
+          "en": "Manual triggering devices. Once the status is synchronized on the Homey App, it indicates that the sleep mode has been exited."
+        }
+      }
     },
     {
       "name": {
@@ -193,7 +221,35 @@
           }
         }
       },
-      "id": "air_quality_sensor"
+      "id": "air_quality_sensor",
+      "firmwareUpdates": {
+        "updates": [
+          {
+            "changelog": {
+              "en": "1. Add power-on lighting effect"
+            },
+            "device": {
+              "manufacturerName": "Third Reality, Inc",
+              "productId": "3RAQ1096Z"
+            },
+            "files": [
+              {
+                "fileVersion": 17,
+                "imageType": 54277,
+                "manufacturerCode": 5127,
+                "maxHardwareVersion": 65520,
+                "minHardwareVersion": 0,
+                "size": 244506,
+                "name": "Smart_Air_Quality_Sensor_OTA_v17_v1.00.17.ota",
+                "integrity": "sha256:95083ead0c7c0b966f7f1bb934cdc015514a0978e4f7087bbcfb5d70045ad6f8"
+              }
+            ]
+          }
+        ],
+        "wakeInstruction": {
+          "en": "Manual triggering devices. Once the status is synchronized on the Homey App, it indicates that the sleep mode has been exited."
+        }
+      }
     },
     {
       "name": {

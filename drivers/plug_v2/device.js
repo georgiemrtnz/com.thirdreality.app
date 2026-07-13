@@ -14,14 +14,15 @@ class Plug_V2 extends ZigBeeDevice {
     try {
       this.registerCapability("onoff", CLUSTER.ON_OFF)
 
-      this.setCapabilityValue('third_reality_reset_summation_delivered_capability', false)
+      if (this.hasCapability('third_reality_reset_summation_delivered_capability')) {
+        this.setCapabilityValue('third_reality_reset_summation_delivered_capability', false).catch(err => this.log(err))
 
-      this.registerCapabilityListener('third_reality_reset_summation_delivered_capability', async (value) => {
-        if (value === true) {
-          await this.zclNode.endpoints[1].clusters['plugPrivateCluster'].writeAttributes({ reset_summation_delivered: 1 }).catch(err => { this.log(err) })
-        }
-
-      })
+        this.registerCapabilityListener('third_reality_reset_summation_delivered_capability', async (value) => {
+          if (value === true) {
+            await this.zclNode.endpoints[1].clusters['plugPrivateCluster'].writeAttributes({ reset_summation_delivered: 1 }).catch(err => { this.log(err) })
+          }
+        })
+      }
 
       this.registerCapability('meter_power', CLUSTER.METERING, {
         reportParser: (value) => {

@@ -1,0 +1,28 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "1. Add power-on lighting effect"
+      },
+      "device": {
+        "manufacturerName": "Third Reality, Inc",
+        "productId": "3RAQ1096Z"
+      },
+      "files": [
+        {
+          "fileVersion": 17,
+          "imageType": 54277,
+          "manufacturerCode": 5127,
+          "maxHardwareVersion": 65520,
+          "minHardwareVersion": 0,
+          "size": 244506,
+          "name": "Smart_Air_Quality_Sensor_OTA_v17_v1.00.17.ota",
+          "integrity": "sha256:95083ead0c7c0b966f7f1bb934cdc015514a0978e4f7087bbcfb5d70045ad6f8"
+        }
+      ]
+    }
+  ],
+  "wakeInstruction": {
+    "en": "Manual triggering devices. Once the status is synchronized on the Homey App, it indicates that the sleep mode has been exited."
+  }
+}
