@@ -73,5 +73,8 @@
   },
   "1.0.25": {
     "en": "Support OTA for some of our company's devices."
+  },
+  "1.0.26": {
+    "en": "Fixed the crash issue for PLUG V2 and PLUG E2 devices caused by version update\\nOTA support: air_quality_sensor v1.00.17\\nOTA support: air_pressure_sensor v1.00.24"
   }
 }

@@ -3,6 +3,10 @@ ThirdReality Devices support without Bridge for Homey
 
 ## Release notes:
 
+### v1.0.27
+
+- OTA support: air_pressure_sensor v1.00.25
+
 ### v1.0.26
 
 - Fixed the crash issue for PLUG V2 and PLUG E2 devices caused by version update
