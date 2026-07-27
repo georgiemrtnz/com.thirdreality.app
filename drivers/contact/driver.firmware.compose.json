@@ -21,6 +21,28 @@
           "integrity": "sha256:18931a8bb5033f2c1ba9018603a7dcdd0b3d0ea206a5cf77be6ab451b4eec80c"
         }
       ]
+    },
+    {
+      "changelog": {
+        "en": "Optimize battery level attribute issue (modify ZCLATTRID BATTERY PERCENTAGE REMAINING attribute)"
+      },
+      "device": {
+        "manufacturerName": [
+          "THIRDREALITY",
+          "Third Reality, Inc"
+        ],
+        "productId": "3RDS17BZ"
+      },
+      "files": [
+        {
+          "fileVersion": 68,
+          "imageType": 54178,
+          "manufacturerCode": 4659,
+          "size": 150098,
+          "name": "Door_Sensor_PROD_OTA_V68_1.00.68.ota",
+          "integrity": "sha256:b37fddf44835cc80a7ec793120d2115b26e5ed9a4344c7f8554275738b5f87d3"
+        }
+      ]
     }
   ],
   "wakeInstruction": {

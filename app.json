@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.thirdreality.app",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "compatibility": ">=12.5.0",
   "sdk": 3,
   "platforms": [
@@ -185,6 +185,27 @@
                 "size": 266258,
                 "name": "Smart_Filter_Sensor_OTA_25_1.00.25.ota",
                 "integrity": "sha256:da6938bdf7450adeac9d1ef267bbd3aad013cb6ed7ed1f71f07c584d2d317339"
+              }
+            ]
+          },
+          {
+            "changelog": {
+              "en": "Set ZCL_ATTR_ANALOG_INPUT_APPLICATION_TYPE to 0x00040000."
+            },
+            "device": {
+              "manufacturerName": "Third Reality, Inc",
+              "productId": "3RAP0149BZ"
+            },
+            "files": [
+              {
+                "fileVersion": 26,
+                "imageType": 54190,
+                "manufacturerCode": 5127,
+                "maxHardwareVersion": 65520,
+                "minHardwareVersion": 0,
+                "size": 266250,
+                "name": "Smart_Filter_Sensor_OTA_26_1.00.26.ota",
+                "integrity": "sha256:aba7ff9d324bf8d36dcbfa6e94bcf336a1a7764d9ea787c79d9c5c380889eb5e"
               }
             ]
           }
@@ -679,6 +700,28 @@
                 "size": 131682,
                 "name": "3RDS17BZ_ZHA_063_20260512_062544.ota",
                 "integrity": "sha256:18931a8bb5033f2c1ba9018603a7dcdd0b3d0ea206a5cf77be6ab451b4eec80c"
+              }
+            ]
+          },
+          {
+            "changelog": {
+              "en": "Optimize battery level attribute issue (modify ZCLATTRID BATTERY PERCENTAGE REMAINING attribute)"
+            },
+            "device": {
+              "manufacturerName": [
+                "THIRDREALITY",
+                "Third Reality, Inc"
+              ],
+              "productId": "3RDS17BZ"
+            },
+            "files": [
+              {
+                "fileVersion": 68,
+                "imageType": 54178,
+                "manufacturerCode": 4659,
+                "size": 150098,
+                "name": "Door_Sensor_PROD_OTA_V68_1.00.68.ota",
+                "integrity": "sha256:b37fddf44835cc80a7ec793120d2115b26e5ed9a4344c7f8554275738b5f87d3"
               }
             ]
           }

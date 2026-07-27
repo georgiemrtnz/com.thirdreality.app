@@ -3,6 +3,11 @@ ThirdReality Devices support without Bridge for Homey
 
 ## Release notes:
 
+### v1.0.28
+
+- OTA support: air_pressure_sensor(Smart Filter Sensor) v1.00.26
+- OTA support: contact(Door Sensor) v1.00.68
+
 ### v1.0.27
 
 - OTA support: air_pressure_sensor v1.00.25
