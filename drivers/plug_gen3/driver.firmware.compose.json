@@ -99,6 +99,32 @@
           "integrity": "sha256:af3dab7763b1b7adf3ac632acfa161d1681c7a34cb39e3e1e89e3c5d9f93d13c"
         }
       ]
+    },
+    {
+      "changelog": {
+        "en": "After zb_initDevices is executed, zcl_getAttr can be called to retain the previously set LED brightness upon power cycling."
+      },
+      "device": {
+        "manufacturerName": [
+          "Thirdreality",
+          "Third Reality, Inc"
+        ],
+        "productId": "3RSP02064Z"
+      },
+      "files": [
+        {
+          "fileVersion": 56,
+          "imageType": 54205,
+          "manufacturerCode": 5127,
+          "minFileVersion": 41,
+          "maxFileVersion": 257,
+          "maxHardwareVersion": 65520,
+          "minHardwareVersion": 0,
+          "size": 282386,
+          "name": "3RSP02064Z_ZHA_056_20260803_013340.ota",
+          "integrity": "sha256:5af7d276fbb2303bc056b2641695599f8fb485c9d0d3a0115c08218a7c700023"
+        }
+      ]
     }
   ],
   "wakeInstruction": {

@@ -724,6 +724,28 @@
                 "integrity": "sha256:b37fddf44835cc80a7ec793120d2115b26e5ed9a4344c7f8554275738b5f87d3"
               }
             ]
+          },
+          {
+            "changelog": {
+              "en": "Add printing of VID and PID information.\\nOptimize health monitoring log.\\nRemove onoff cluster."
+            },
+            "device": {
+              "manufacturerName": [
+                "THIRDREALITY",
+                "Third Reality, Inc"
+              ],
+              "productId": "3RDS17BZ"
+            },
+            "files": [
+              {
+                "fileVersion": 69,
+                "imageType": 54178,
+                "manufacturerCode": 4659,
+                "size": 148834,
+                "name": "3RDS17BZ_ZHA_069_20260803_054649.ota",
+                "integrity": "sha256:53471340a94dc39c1689b002002098470bd326e6c21d6ab596116589057b8d1c"
+              }
+            ]
           }
         ],
         "wakeInstruction": {
@@ -2373,6 +2395,32 @@
                 "size": 281750,
                 "name": "3RSP02064Z_ZHA_047_h0xD3BD_20260512_085012.ota",
                 "integrity": "sha256:af3dab7763b1b7adf3ac632acfa161d1681c7a34cb39e3e1e89e3c5d9f93d13c"
+              }
+            ]
+          },
+          {
+            "changelog": {
+              "en": "After zb_initDevices is executed, zcl_getAttr can be called to retain the previously set LED brightness upon power cycling."
+            },
+            "device": {
+              "manufacturerName": [
+                "Thirdreality",
+                "Third Reality, Inc"
+              ],
+              "productId": "3RSP02064Z"
+            },
+            "files": [
+              {
+                "fileVersion": 56,
+                "imageType": 54205,
+                "manufacturerCode": 5127,
+                "minFileVersion": 41,
+                "maxFileVersion": 257,
+                "maxHardwareVersion": 65520,
+                "minHardwareVersion": 0,
+                "size": 282386,
+                "name": "3RSP02064Z_ZHA_056_20260803_013340.ota",
+                "integrity": "sha256:5af7d276fbb2303bc056b2641695599f8fb485c9d0d3a0115c08218a7c700023"
               }
             ]
           }

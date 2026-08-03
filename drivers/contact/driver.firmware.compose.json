@@ -43,6 +43,28 @@
           "integrity": "sha256:b37fddf44835cc80a7ec793120d2115b26e5ed9a4344c7f8554275738b5f87d3"
         }
       ]
+    },
+    {
+      "changelog": {
+        "en": "Add printing of VID and PID information.\\nOptimize health monitoring log.\\nRemove onoff cluster."
+      },
+      "device": {
+        "manufacturerName": [
+          "THIRDREALITY",
+          "Third Reality, Inc"
+        ],
+        "productId": "3RDS17BZ"
+      },
+      "files": [
+        {
+          "fileVersion": 69,
+          "imageType": 54178,
+          "manufacturerCode": 4659,
+          "size": 148834,
+          "name": "3RDS17BZ_ZHA_069_20260803_054649.ota",
+          "integrity": "sha256:53471340a94dc39c1689b002002098470bd326e6c21d6ab596116589057b8d1c"
+        }
+      ]
     }
   ],
   "wakeInstruction": {
