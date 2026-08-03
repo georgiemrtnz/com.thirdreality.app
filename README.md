@@ -6,7 +6,7 @@ ThirdReality Devices support without Bridge for Homey
 ### v1.0.29
 
 - OTA support: plug_gen3 (Smart Plug Gen3) v1.00.56
-- OTA support: contact (Door Sensor) v1.00.68
+- OTA support: contact (Door Sensor) v1.00.69
 
 ### v1.0.28
 
