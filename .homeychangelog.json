@@ -82,5 +82,8 @@
   },
   "1.0.28": {
     "en": "Added the OTA firmware for several new devices."
+  },
+  "1.0.29": {
+    "en": "OTA support: plug_gen3 (Smart Plug Gen3) v1.00.56\\nOTA support: contact (Door Sensor) v1.00.68"
   }
 }

@@ -23,6 +23,30 @@
           "integrity": "sha256:44ed5a0ac0b5f20a63138e48c7f4ed498d8dd404b1b4230bb8e3e6e1a51e1530"
         }
       ]
+    },
+    {
+      "changelog": {
+        "en": "Optimize the fast heartbeat within 30 seconds after the hub reconnects following an OTA update."
+      },
+      "device": {
+        "manufacturerName": [
+          "Thirdreality",
+          "Third Reality, Inc"
+        ],
+        "productId": "3RWS0218Z"
+      },
+      "files": [
+        {
+          "fileVersion": 18,
+          "imageType": 54210,
+          "manufacturerCode": 5127,
+          "maxHardwareVersion": 65520,
+          "minHardwareVersion": 0,
+          "size": 261690,
+          "name": "3RWS0218Z_ZHA_018_20260804_090533.ota",
+          "integrity": "sha256:5f5b31dd935d276b97aa7065fa998a94a1013a7759a4b28b66be6356ed71649e"
+        }
+      ]
     }
   ],
   "wakeInstruction": {

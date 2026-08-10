@@ -3,6 +3,10 @@ ThirdReality Devices support without Bridge for Homey
 
 ## Release notes:
 
+### v1.0.30
+- Change the title of the "measure_tvoc_index" capability of the Air Quality Sensor to "VOC index".
+- OTA support: water_leak_gen2 v1.00.18
+
 ### v1.0.29
 
 - OTA support: plug_gen3 (Smart Plug Gen3) v1.00.56

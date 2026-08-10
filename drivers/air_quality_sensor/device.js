@@ -15,10 +15,14 @@ module.exports = class airPressureSensor extends ZigBeeDevice {
   async onNodeInit({ zclNode }) {
     this.log("Air Quality Sensor has been initialized");
 
+    await this.setCapabilityOptions("measure_tvoc_index", {
+      title: { en: "VOC index" }
+    });
+
     await zclNode.endpoints[1].clusters.vocPrivateCluster.on(
       "attr.tvocIndex",
       (value) => {
-        this.log("tvocIndex: ", value);
+        this.log("vocIndex: ", value);
         this.setCapabilityValue("measure_tvoc_index", value).catch((error) =>
           this.log(error),
         );
