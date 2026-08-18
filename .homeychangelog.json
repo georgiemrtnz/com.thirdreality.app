@@ -85,5 +85,8 @@
   },
   "1.0.29": {
     "en": "OTA support: plug_gen3 (Smart Plug Gen3) v1.00.56\\nOTA support: contact (Door Sensor) v1.00.68"
+  },
+  "1.0.30": {
+    "en": "Change the title of the \"measure_tvoc_index\" capability of the Air Quality Sensor to \"VOC index\".\\nOTA support: water_leak_gen2 v1.00.18"
   }
 }

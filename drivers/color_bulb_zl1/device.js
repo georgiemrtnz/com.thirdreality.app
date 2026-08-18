@@ -70,6 +70,10 @@ class colorBulbZL1 extends ZigBeeDevice {
 
     // Register `onoff` and `dim` capabilities
     if (this.hasCapability('onoff')) {
+      await zclNode.endpoints[1].clusters.onOff.on("attr.onOff", (value) => {
+      this.log("onoff: ", value);
+      this.setCapabilityValue("onoff", value).catch((error) => this.log(error));
+    });
       this.registerCapabilityListener('onoff', value => {
         return this.changeOnOff(value);
       });
