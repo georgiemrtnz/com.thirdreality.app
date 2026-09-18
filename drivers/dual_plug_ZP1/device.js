@@ -11,16 +11,6 @@ Cluster.addCluster(PlugPrivateCluster);
 class Dual_Plug extends ZigBeeDevice {
   async onNodeInit({ zclNode }) {
     try {
-      const _turned_on_left_condition =
-        this.homey.flow.getConditionCard("is_turned_on_left");
-      const _turned_off_left_condition =
-        this.homey.flow.getConditionCard("is_turned_off_left");
-      const _turned_on_right_condition =
-        this.homey.flow.getConditionCard("is_turned_on_right");
-      const _turned_off_right_condition = this.homey.flow.getConditionCard(
-        "is_turned_off_right",
-      );
-
       this.registerCapability(
         "measure_current_of_left_dual_plug",
         CLUSTER.ELECTRICAL_MEASUREMENT,
@@ -78,40 +68,12 @@ class Dual_Plug extends ZigBeeDevice {
 
       this.registerCapabilityListener(
         "third_reality_dual_plug_left_switch_capability",
-        async (value) => {
-          if (value === true) {
-            await this.zclNode.endpoints[1].clusters["onOff"]
-              .setOn()
-              .catch((err) => {
-                this.error(err);
-              });
-          } else {
-            await this.zclNode.endpoints[1].clusters["onOff"]
-              .setOff()
-              .catch((err) => {
-                this.error(err);
-              });
-          }
-        },
+        async (value) => this.setEndpointPower(1, value),
       );
 
       this.registerCapabilityListener(
         "third_reality_dual_plug_right_switch_capability",
-        async (value) => {
-          if (value === true) {
-            await this.zclNode.endpoints[2].clusters["onOff"]
-              .setOn()
-              .catch((err) => {
-                this.error(err);
-              });
-          } else {
-            await this.zclNode.endpoints[2].clusters["onOff"]
-              .setOff()
-              .catch((err) => {
-                this.error(err);
-              });
-          }
-        },
+        async (value) => this.setEndpointPower(2, value),
       );
 
       this.registerCapabilityListener(
@@ -154,80 +116,26 @@ class Dual_Plug extends ZigBeeDevice {
         this.error("Failed to initialize some attributes, but continuing...", error);
       }
       
-      _turned_on_left_condition.registerRunListener(async (args, state) => {
-        const currentValue = await this.getCapabilityValue(
-          "third_reality_dual_plug_left_switch_capability",
-        );
-        if (currentValue === true) {
-          return true;
-        }
-      });
-
-      _turned_off_left_condition.registerRunListener(async (args, state) => {
-        const currentValue = await this.getCapabilityValue(
-          "third_reality_dual_plug_left_switch_capability",
-        );
-        if (currentValue === false) {
-          return true;
-        }
-      });
-
-      _turned_on_right_condition.registerRunListener(async (args, state) => {
-        const currentValue = await this.getCapabilityValue(
-          "third_reality_dual_plug_right_switch_capability",
-        );
-        if (currentValue === true) {
-          return true;
-        }
-      });
-
-      _turned_off_right_condition.registerRunListener(async (args, state) => {
-        const currentValue = await this.getCapabilityValue(
-          "third_reality_dual_plug_right_switch_capability",
-        );
-        if (currentValue === false) {
-          return true;
-        }
-      });
-
-      this.driver._turn_on_left_action.registerRunListener(
-        async (args, state) => {
-          await this.zclNode.endpoints[1].clusters["onOff"]
-            .setOn()
-            .catch((err) => {
-              this.error(err);
-            });
-        },
-      );
-      this.driver._turn_on_right_action.registerRunListener(
-        async (args, state) => {
-          await this.zclNode.endpoints[2].clusters["onOff"]
-            .setOn()
-            .catch((err) => {
-              this.error(err);
-            });
-        },
-      );
-      this.driver._turn_off_left_action.registerRunListener(
-        async (args, state) => {
-          await this.zclNode.endpoints[1].clusters["onOff"]
-            .setOff()
-            .catch((err) => {
-              this.error(err);
-            });
-        },
-      );
-      this.driver._turn_off_right_action.registerRunListener(
-        async (args, state) => {
-          await this.zclNode.endpoints[2].clusters["onOff"]
-            .setOff()
-            .catch((err) => {
-              this.error(err);
-            });
-        },
-      );
     } catch (err) {
       this.log(err);
+    }
+  }
+
+  async setEndpointPower(endpoint, value) {
+    const onOffCluster = this.zclNode.endpoints[endpoint]?.clusters.onOff;
+    if (!onOffCluster) {
+      throw new Error(`ZP1 endpoint ${endpoint} is unavailable`);
+    }
+
+    try {
+      if (value === true) {
+        await onOffCluster.setOn();
+      } else {
+        await onOffCluster.setOff();
+      }
+    } catch (err) {
+      this.error(`Failed to set ZP1 endpoint ${endpoint} ${value ? "on" : "off"}`, err);
+      throw err;
     }
   }
 

@@ -11,7 +11,9 @@ class GarageDoorSensor extends ZigBeeDevice {
   async onNodeInit({ zclNode }) {
     try {
       this.setCapabilityOptions("garagedoor_closed", { setable: false })
-      this.setCapabilityValue("garagedoor_closed", false)
+      // Keep the persisted state through app/Homey restarts. Setting this to
+      // false here generated a spurious "garage open" event on every update.
+      // The next IAS Zone report remains the source of truth.
 
       if (this.getClusterEndpoint(CLUSTER.POWER_CONFIGURATION)) {
         zclNode.endpoints[this.getClusterEndpoint(CLUSTER.POWER_CONFIGURATION)].clusters[CLUSTER.POWER_CONFIGURATION.NAME]

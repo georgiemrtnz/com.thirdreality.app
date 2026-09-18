@@ -26,12 +26,21 @@ class VibrationSensor extends ZigBeeDevice {
         };
       }
       if (this.getClusterEndpoint(CLUSTER.POWER_CONFIGURATION)) {
-        zclNode.endpoints[
+        const powerConfiguration = zclNode.endpoints[
           this.getClusterEndpoint(CLUSTER.POWER_CONFIGURATION)
-        ].clusters[CLUSTER.POWER_CONFIGURATION.NAME].on(
+        ].clusters[CLUSTER.POWER_CONFIGURATION.NAME];
+
+        powerConfiguration.on(
           "attr.batteryPercentageRemaining",
           this.onBatteryPercentageRemainingAttributeReport.bind(this),
         );
+
+        // Battery-powered sensors can remain quiet for long periods. If Homey
+        // has no persisted battery reading, obtain one once after startup;
+        // otherwise rely on normal attribute reports and avoid extra traffic.
+        if (this.getCapabilityValue("measure_battery") === null) {
+          await this.refreshBatteryValue(powerConfiguration);
+        }
       }
     } catch (err) {
       this.log(err);
@@ -74,6 +83,33 @@ class VibrationSensor extends ZigBeeDevice {
       "measure_battery",
       batteryPercentageRemaining / 2,
     ).catch(this.error);
+    this.unsetWarning().catch(this.error);
+  }
+
+  async refreshBatteryValue(powerConfiguration) {
+    try {
+      const { batteryPercentageRemaining } = await powerConfiguration
+        .readAttributes(["batteryPercentageRemaining"]);
+
+      if (Number.isFinite(batteryPercentageRemaining)) {
+        this.onBatteryPercentageRemainingAttributeReport(
+          batteryPercentageRemaining,
+        );
+        return;
+      }
+
+      await this.setWarning(
+        "Battery reading unavailable; wake this sensor or improve its Zigbee route.",
+      );
+    } catch (err) {
+      // A sleeping end device may not respond immediately. Make the missing
+      // state visible in Homey, then clear it as soon as a normal report
+      // arrives.
+      this.log("Unable to refresh vibration-sensor battery value", err);
+      await this.setWarning(
+        "Battery reading unavailable; wake this sensor or improve its Zigbee route.",
+      ).catch(this.error);
+    }
   }
 
   /**
