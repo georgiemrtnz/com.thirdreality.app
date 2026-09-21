@@ -21,6 +21,19 @@ class soilMoistureSensorGen2 extends ZigBeeDevice {
     try {
       this.log('Soil Moisture Sensor Gen2 has been initialized');
       this.zclNode = zclNode
+
+      if (!this.hasCapability("measure_moisture")) {
+        await this.addCapability("measure_moisture")
+      }
+      // Mirror moisture into measure_humidity so HomeKit bridges expose it as
+      // Current Relative Humidity. measure_moisture stays for existing Flows.
+      if (!this.hasCapability("measure_humidity")) {
+        await this.addCapability("measure_humidity")
+        const moisture = this.getCapabilityValue("measure_moisture")
+        if (typeof moisture === "number") {
+          await this.setCapabilityValue("measure_humidity", moisture).catch(this.error)
+        }
+      }
       this.device_version = await zclNode.endpoints[1].clusters.basic.readAttributes(['appVersion']).catch(error => { this.error(error) })
       await this.registerCapability("measure_battery", CLUSTER.POWER_CONFIGURATION);
 
@@ -77,7 +90,11 @@ class soilMoistureSensorGen2 extends ZigBeeDevice {
     const humidityOffset = this.getSetting('humidity_offset') || 0;
     const parsedValue = this.getSetting('humidity_decimals') === '2' ? Math.round((measuredValue / 100) * 100) / 100 : Math.round((measuredValue / 100) * 10) / 10;
     this.log('relativeHumidity:', parsedValue, '+ humidity offset', humidityOffset);
-    this.setCapabilityValue('measure_moisture', parsedValue + humidityOffset).catch(this.error);
+    const moisture = parsedValue + humidityOffset;
+    this.setCapabilityValue('measure_moisture', moisture).catch(this.error);
+    if (this.hasCapability('measure_humidity')) {
+      this.setCapabilityValue('measure_humidity', moisture).catch(this.error);
+    }
   }
 
   onBatteryPercentageRemainingAttributeReport(batteryPercentageRemaining) {
